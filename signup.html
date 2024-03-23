@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: blue;
+        }
+        .container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            background-color: white;
+        }
+        h2 {
+            text-align: center;
+        }
+        input[type="text"],
+        input[type="password"],
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        p {
+            text-align: center;
+        }
+        .button {
+            margin-top: 20px;
+        }
+        .button button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            color: white;
+            background-color: blue;
+            text-align: center;
+        }
+        .footer,
+        .footer1 {
+            margin-top: 20px;
+        }
+        .footer button,
+        .footer1 button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            background-color: blue;
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Signup</h2>
+        <form action="login.html" onsubmit="return validateForm()">
+            <input type="text" id="username" placeholder="Email" required/><br>
+            <input type="password" id="password" placeholder="Create Password" required/><br>
+            <input type="password" id="confirm_password" placeholder="Confirm Password" required/><br>
+                   
+            <div class="button">
+                <button type="submit">Signup</button>
+            </div>
+        </form>
+        
+        <div>
+            <p>Already have an account? <a href="login.html">Login</a></p>
+        </div>
+        
+        <p>or</p>
+        
+        <div class="footer">
+            <button>Login with Facebook</button>    
+        </div>
+        
+        <div class="footer1">
+            <button>Login with Google</button>    
+        </div>
+    </div>
+    
+    <script>
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function validateForm() {
+            const email = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const confirm_password = document.getElementById('confirm_password').value;
+
+            if (!isValidEmail(email)) {
+                alert("Please enter a valid email address.");
+                return false; 
+            }
+
+            if (password.length < 8) {
+                alert("Password should be at least 8 characters long.");
+                return false; 
+            }
+
+            if (password !== confirm_password) {
+                alert("Passwords do not match.");
+                return false;
+            }
+
+            return true; 
+        }
+    </script>
+</body>
+</html>
+
